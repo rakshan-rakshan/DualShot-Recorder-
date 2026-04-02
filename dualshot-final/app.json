@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "DualShot Recorder",
+    "slug": "dualshot-recorder",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "dualshot",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.dualshot.recorder",
+      "infoPlist": {
+        "NSCameraUsageDescription": "DualShot needs camera access to record video",
+        "NSMicrophoneUsageDescription": "DualShot needs microphone access to record audio",
+        "NSPhotoLibraryAddUsageDescription": "DualShot needs gallery access to save your videos"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_MEDIA_VIDEO",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.dualshot.recorder"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "DualShot needs camera access to record video",
+          "microphonePermission": "DualShot needs microphone to record audio",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "DualShot needs gallery access to save your videos",
+          "savePhotosPermission": "DualShot needs permission to save videos to your gallery"
+        }
+      ]
+    ]
+  }
+}

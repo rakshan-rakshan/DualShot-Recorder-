@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DualShot Recorder — Record Once, Get Both Formats</title>
+<meta name="description" content="Free Android app that records one video and automatically produces portrait (9:16) and landscape (16:9) crops. No ads, no tracking.">
+<meta property="og:title" content="DualShot Recorder">
+<meta property="og:description" content="Record once. Get portrait + landscape. One take.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--surface:#18181b;--border:#27272a;--text:#fafafa;--muted:#a1a1aa;--accent:#e63946;--accent-dim:rgba(230,57,70,0.15)}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(230,57,70,0.08) 0%,transparent 70%);pointer-events:none}
+
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(230,57,70,0.3);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1.5px;padding:6px 16px;border-radius:20px;margin-bottom:32px;text-transform:uppercase}
+
+h1{font-family:'Space Mono',monospace;font-size:clamp(36px,6vw,64px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:16px}
+.tagline{font-size:clamp(16px,2.5vw,22px);color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:48px}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;letter-spacing:0.5px;transition:transform 0.15s,box-shadow 0.15s;cursor:pointer;border:none}
+.btn:hover{transform:translateY(-1px);text-decoration:none}
+.btn-primary{background:#fff;color:#000}
+.btn-primary:hover{box-shadow:0 8px 30px rgba(255,255,255,0.15)}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--muted)}
+
+.frames{display:flex;gap:16px;margin-top:64px;justify-content:center}
+.frame{border:2px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;color:var(--muted);font-size:14px;transition:border-color 0.3s}
+.frame:hover{border-color:var(--accent)}
+.frame-port{width:80px;height:142px}
+.frame-land{width:142px;height:80px}
+
+section{max-width:800px;margin:0 auto;padding:80px 20px}
+h2{font-family:'Space Mono',monospace;font-size:28px;margin-bottom:32px;letter-spacing:-0.5px}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:60px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+.feature-title{font-weight:700;font-size:15px;margin-bottom:6px}
+.feature-desc{color:var(--muted);font-size:13px;line-height:1.6}
+.feature-pro{display:inline-block;background:var(--accent-dim);color:var(--accent);font-size:9px;font-weight:800;letter-spacing:1px;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle}
+
+.how{counter-reset:steps}
+.step{display:flex;gap:20px;margin-bottom:32px;align-items:flex-start}
+.step::before{counter-increment:steps;content:counter(steps);font-family:'Space Mono',monospace;font-size:24px;font-weight:700;color:var(--accent);min-width:36px}
+.step-content h3{font-size:16px;margin-bottom:4px}
+.step-content p{color:var(--muted);font-size:14px;line-height:1.6}
+
+.premium-card{background:var(--surface);border:1px solid rgba(230,57,70,0.3);border-radius:16px;padding:40px;text-align:center;margin:60px 0}
+.premium-price{font-family:'Space Mono',monospace;font-size:36px;font-weight:700;color:var(--accent);margin:8px 0}
+.premium-note{color:var(--muted);font-size:14px;margin-bottom:24px}
+
+.privacy{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:40px 0}
+.privacy p{color:var(--muted);font-size:14px;line-height:1.8}
+
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Android App — Free &amp; Open Source</div>
+  <h1>DualShot<br>Recorder</h1>
+  <p class="tagline">Record once. Get portrait (9:16) and landscape (16:9) video from a single take. No ads, no tracking.</p>
+  <div class="cta-row">
+    <a href="https://github.com/AwinashKassia/dualshot-recorder" class="btn btn-primary">★ GitHub Repo</a>
+    <a href="https://buymeacoffee.com/rakshan" class="btn btn-secondary">☕ Support</a>
+  </div>
+  <div class="frames">
+    <div class="frame frame-port">9:16</div>
+    <div class="frame frame-land">16:9</div>
+  </div>
+</div>
+
+<section>
+  <h2>Features</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-title">Dual crop output</div>
+      <div class="feature-desc">One recording automatically produces both portrait and landscape videos, center-cropped from the original.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">Preview before saving</div>
+      <div class="feature-desc">See both crops side-by-side after recording. Discard or save — your choice.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">1080p at 30fps</div>
+      <div class="feature-desc">High quality video recording with audio. Front and back camera support.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">Storage estimate</div>
+      <div class="feature-desc">See how many minutes of recording you have left before you start.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">4K recording <span class="feature-pro">PRO</span></div>
+      <div class="feature-desc">Ultra HD resolution for maximum quality. One-time $4.99 unlock.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">24 / 60 fps <span class="feature-pro">PRO</span></div>
+      <div class="feature-desc">Cinematic 24fps or buttery smooth 60fps. Choose your look.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">MOV format <span class="feature-pro">PRO</span></div>
+      <div class="feature-desc">Export as MOV for professional editing workflows alongside MP4.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-title">Zero data collection</div>
+      <div class="feature-desc">No accounts, no analytics, no ads. Your footage never leaves your device.</div>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="how">
+    <div class="step">
+      <div class="step-content">
+        <h3>Record your video</h3>
+        <p>Point, frame, and hit the red button. Front or back camera, with torch if you need it.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <h3>Preview both crops</h3>
+        <p>See the 9:16 portrait and 16:9 landscape versions side-by-side before committing.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <h3>Save to gallery</h3>
+        <p>Both videos land in your DualShot album. Upload the portrait to Reels, the landscape to YouTube.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="premium-card">
+    <h2>DualShot Premium</h2>
+    <div class="premium-price">$4.99</div>
+    <div class="premium-note">One-time purchase. No subscriptions. Ever.</div>
+    <p style="color:var(--muted);font-size:14px;max-width:400px;margin:0 auto 24px;line-height:1.6">
+      Unlock 4K, cinematic 24fps, smooth 60fps, MOV format, and custom aspect ratios.
+    </p>
+    <a href="#" class="btn btn-primary" style="display:inline-flex">Coming to Play Store</a>
+  </div>
+
+  <div class="privacy">
+    <h2 style="font-size:20px;margin-bottom:12px">Privacy</h2>
+    <p>DualShot collects zero data. No analytics. No crash reporting. No network requests. The app works entirely offline. Your videos are processed on-device and saved to your local gallery. We never see your footage.</p>
+  </div>
+</section>
+
+<footer>
+  <p>DualShot Recorder &copy; 2026 <a href="https://github.com/AwinashKassia">Rakshan</a> · <a href="https://github.com/AwinashKassia/dualshot-recorder">Source Code</a> · MIT License</p>
+</footer>
+
+</body>
+</html>
