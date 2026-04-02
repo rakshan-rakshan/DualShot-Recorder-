@@ -357,8 +357,8 @@ MIT License — see [LICENSE](LICENSE) for full terms.
 **Rakshan** — Full-stack developer, open-source advocate
 
 - GitHub: [@rakshan-rakshan](https://github.com/rakshan-rakshan)
-- Twitter: [@AwinashKassia](https://twitter.com/AwinashKassia)
-- Website: [yoursite.com](https://yoursite.com)
+- Twitter: [@Rakshan__](https://x.com/Rakshan__)
+- Linkedin: [Linkedin.com](https://www.linkedin.com/in/kassiawinash/)
 
 ---
 
